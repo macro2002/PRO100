@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:v="clr-namespace:System;assembly=System.Runtime">
+    <v:String x:Key="text.Calendar">Календарь</v:String>
+    <v:String x:Key="text.Projects">Проекты</v:String>
+    <v:String x:Key="text.Administration">Администрирование</v:String>
+    <v:String x:Key="text.Settings">Настройки</v:String>
+    <v:String x:Key="text.Exit">Выход</v:String>
+
+    <v:String x:Key="text.Main_settings">Основные настройки</v:String>
+    <v:String x:Key="text.Documents">Документы</v:String>
+    <v:String x:Key="text.Dropdown_lists">Выпадающие списки</v:String>
+    <v:String x:Key="text.About">О программе</v:String>
+
+    <v:String x:Key="text.Branch_code">Код филиала</v:String>
+    <v:String x:Key="text.Currency_unit">Денежная единица</v:String>
+    <v:String x:Key="text.Interface_language">Язык интерфейса</v:String>
+</ResourceDictionary>

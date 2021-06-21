@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <v:String x:Key="title.App">PRO100</v:String>
+    <v:String x:Key="title.Languages">Select the installation language</v:String>
+    <v:String x:Key="title.License">License Agreement</v:String>
+    <v:String x:Key="title.Сomplete">Installation is complete</v:String>
+    <v:String x:Key="title.ExitInstaller">Exit the installer</v:String>
+</ResourceDictionary>

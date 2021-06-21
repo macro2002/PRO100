@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Default/WindowStyles.xaml"/>
+        <ResourceDictionary Source="Default/ButtonStyles.xaml"/>
+        <ResourceDictionary Source="Default/ComboBoxStyles.xaml"/>
+        <ResourceDictionary Source="Default/LabelStyles.xaml"/>
+        <ResourceDictionary Source="Default/MenuStyles.xaml"/>
+        <ResourceDictionary Source="Default/TextBoxStyles.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--Background-->
+    <SolidColorBrush x:Key="ShadowLayer" Color="#E5000000"/>
+</ResourceDictionary>

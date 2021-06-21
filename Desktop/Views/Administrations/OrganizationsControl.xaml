@@ -1,0 +1,233 @@
+﻿<UserControl x:Class="Desktop.View.Administrations.OrganizationsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Desktop.View.Administrations" 
+             xmlns:c="clr-namespace:Desktop.Infrastructure.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <c:DateTimeToStringConverter x:Key="DateTimeToStringConverter"/>
+    </UserControl.Resources>
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Width="28" Height="28" Style="{DynamicResource ButtonGreen}"
+                    Command="{Binding ActionCommand}" CommandParameter="Add">
+                    <Viewbox Width="28" Height="28">
+                        <Canvas Width="24" Height="24" Margin="0,-7,0,0">
+                            <Path Fill="#BFFFFFFF" Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+                        </Canvas>
+                    </Viewbox>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Border Grid.Row="1" Width="440" Padding="15"
+                BorderThickness="1" BorderBrush="#FF688CAF">
+            <StackPanel>
+                <Label Style="{DynamicResource LabelBoldStyle}" Margin="0,0,0,0" Width="200" FontSize="16" HorizontalAlignment="Center"
+                           Content="Новая организация"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Style="{DynamicResource LabelBoldStyle}" Margin="0,19,0,0" Width="200"
+                           Content="Название организации:"/>
+                    <TextBox Style="{DynamicResource TextBoxStyle}" Margin="0,10,0,0" VerticalAlignment="Top" Width="200" HorizontalContentAlignment="Center"
+                             Text="{Binding Organization.Name}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Style="{DynamicResource LabelBoldStyle}" Margin="0,19,0,0" Width="200"
+                           Content="Контактное лицо:"/>
+                    <TextBox Style="{DynamicResource TextBoxStyle}" Margin="0,10,0,0" VerticalAlignment="Top" Width="200" HorizontalContentAlignment="Center"
+                             Text="{Binding Organization.Director}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Style="{DynamicResource LabelBoldStyle}" Margin="0,19,0,0" Width="200"
+                           Content="Телефон:"/>
+                    <TextBox Style="{DynamicResource TextBoxStyle}" Margin="0,10,0,0" VerticalAlignment="Top" Width="200" HorizontalContentAlignment="Center"
+                             Text="{Binding Organization.Phone}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Style="{DynamicResource LabelBoldStyle}" Margin="0,19,0,0" Width="200"
+                           Content="Email:"/>
+                    <TextBox Style="{DynamicResource TextBoxStyle}" Margin="0,10,0,0" VerticalAlignment="Top" Width="200" HorizontalContentAlignment="Center"
+                             Text="{Binding Organization.Email}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Style="{DynamicResource LabelBoldStyle}" Margin="0,19,0,0" Width="200"
+                           Content="Количество пользователей:"/>
+                    <TextBox Style="{DynamicResource TextBoxStyle}" Margin="0,10,0,0" VerticalAlignment="Top" Width="200" HorizontalContentAlignment="Center"
+                             Text="{Binding Organization.Count}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Style="{DynamicResource LabelBoldStyle}" Margin="0,19,0,0" Width="200"
+                           Content="Дата окончания лицензии:"/>
+                    <TextBox Style="{DynamicResource TextBoxStyle}" Margin="0,10,0,0" VerticalAlignment="Top" Width="200" HorizontalContentAlignment="Center"
+                             Text="{Binding Organization.LicenseTermination, Converter={StaticResource DateTimeToStringConverter}}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Grid.Column="1" Style="{DynamicResource ButtonGreen}" Margin="0,15,15,0" Width="80" Content="Сохранить"
+                            Command="{Binding ActionCommand}" CommandParameter="Save"/>
+                    <Button Grid.Column="1" Style="{DynamicResource ButtonGreen}" Margin="0,15,10,0" Width="80" Content="Отмена"
+                            Command="{Binding ActionCommand}" CommandParameter="Cansel"/>
+                </StackPanel>
+            </StackPanel>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Visible"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Organization}" Value="{x:Null}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+        </Border>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0" Margin="0,15,0,0" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False"
+                      ItemsSource="{Binding Organizations}" SelectedItem="{Binding SelectedOrganization}">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="*">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Padding="5" TextWrapping="Wrap" TextAlignment="Left"
+                                       Text="Название" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Padding="5" TextWrapping="Wrap" TextAlignment="Left" BorderThickness="0" IsReadOnly="True"
+                                           Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="200">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Padding="5" TextWrapping="Wrap" TextAlignment="Left"
+                                       Text="Контактное лицо" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Padding="5" TextWrapping="Wrap" TextAlignment="Left" BorderThickness="0" IsReadOnly="True"
+                                           Text="{Binding Director}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="120">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Width="120" Padding="5" TextWrapping="Wrap" TextAlignment="Center"
+                                       Text="Телефон" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Width="120" Padding="5" TextWrapping="Wrap" TextAlignment="Center" BorderThickness="0" IsReadOnly="True"
+                                           Text="{Binding Phone}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="200">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Width="200" Padding="5" TextWrapping="Wrap" TextAlignment="Center"
+                                       Text="Email" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Width="200" Padding="5" TextWrapping="Wrap" TextAlignment="Center" BorderThickness="0" IsReadOnly="True"
+                                           Text="{Binding Email}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="250">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Width="250" Padding="5" TextWrapping="Wrap" TextAlignment="Center"
+                                       Text="Лицензия" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Width="250" Padding="5" TextWrapping="Wrap" TextAlignment="Center" BorderThickness="0" IsReadOnly="True"
+                                           Text="{Binding License}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="120">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Width="120" Padding="5" TextWrapping="Wrap" TextAlignment="Center"
+                                       Text="Количество" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Width="120" Padding="5" TextWrapping="Wrap" TextAlignment="Center" BorderThickness="0" IsReadOnly="True"
+                                           Text="{Binding Count}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="120">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Width="120" Padding="5" TextWrapping="Wrap" TextAlignment="Center"
+                                       Text="Дата окончания лицензии" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Width="120" Padding="5" TextWrapping="Wrap" TextAlignment="Center" BorderThickness="0" IsReadOnly="True"
+                                           Text="{Binding LicenseTermination, Converter={StaticResource DateTimeToStringConverter}}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Width="135" Style="{DynamicResource ButtonGreen}"
+                                    Content="Пользователи" Command="{Binding DataContext.OpenUsersCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding ID}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Border Grid.Column="1" Width="300" Margin="0,15,0,0"
+                    BorderThickness="0,1,1,1" BorderBrush="#FF688CAF">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+
+                    <StackPanel Grid.Row="1" Margin="0,15,0,0">
+                        <Label Style="{DynamicResource LabelBoldStyle}" HorizontalAlignment="Center"  FontSize="14"
+                               Content="Доступные модули"/>
+
+                        <Border Height="100">
+
+                        </Border>
+                      
+                    </StackPanel>
+
+                    <Button Grid.Row="2" Width="240" Margin="25" Style="{DynamicResource ButtonBlue}" HorizontalAlignment="Center"  VerticalAlignment="Bottom"
+                            Content="Обновить лицензионный ключ" 
+                            Command="{Binding ActionCommand}" CommandParameter="UpdateLicense"/>
+                </Grid>
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedOrganization}" Value="{x:Null}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Desktop": {
+      "commandName": "Project",
+      "commandLineArgs": "-Installed -Start ru-RU"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon002.ico</ApplicationIcon>
+    <Authors>Maksim Shalashov, Evgenia Nekrushets</Authors>
+    <Company>ООО 'Мебельные Технологии'</Company>
+    <Product>PRO100</Product>
+    <Description>PRO100 documentation and reporting tool</Description>
+    <Copyright>ООО 'Мебельные Технологии'</Copyright>
+    <PackageIcon>ICON_64.png</PackageIcon>
+    <AssemblyName>PRO100</AssemblyName>
+    <Version>1.0.0.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ICON_64.png" />
+    <None Remove="Infrastructure\Themes\Default\icon_selectbox_down.png" />
+    <None Remove="Infrastructure\Themes\Images\icon_selectbox_down.png" />
+    <None Include="ICON_64.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="config.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="icon002.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="project.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\Diologs\" />
+    <Folder Include="Views\Diologs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.6" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="ICON_64.png" />
+    <Resource Include="Infrastructure\Themes\Default\icon_selectbox_down.png" />
+    <EmbeddedResource Include="Infrastructure\Themes\Images\icon_selectbox_down.png" />
+  </ItemGroup>
+
+</Project>

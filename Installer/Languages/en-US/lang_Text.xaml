@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <v:String x:Key="text.SelectedLanguages">Select the language that will be used during the installation process.</v:String>
+    <v:String x:Key="text.Interface_language">Interface language</v:String>
+    <v:String x:Key="text.Back">Back</v:String>
+    <v:String x:Key="text.Next">Next</v:String>
+    <v:String x:Key="text.Install">Install</v:String>
+    <v:String x:Key="text.Cancel">Cancel</v:String>
+    <v:String x:Key="text.Finish">Finish</v:String>
+
+    <v:String x:Key="text.Licence">Please read the following important information before proceeding.</v:String>
+    <v:String x:Key="text.Accept">I accept the terms of the agreement</v:String>
+    <v:String x:Key="text.NotAccept">I do not accept the terms of the agreement</v:String>
+    <v:String x:Key="text.Сomplete">The PRO100 program is installed on your computer.</v:String>
+    <v:String x:Key="text.СompleteDescription">The program can be started using the corresponding icon on the desktop or after exiting the installation.</v:String>
+    <v:String x:Key="text.СompleteCancel">Click "Finish" to exit the installer.</v:String>
+
+    <v:String x:Key="text.Yes">Yes</v:String>
+    <v:String x:Key="text.No">No</v:String>
+
+    <v:String x:Key="text.ExitInstaller1">The installation is not complete. If you exit, the program will not be installed.</v:String>
+    <v:String x:Key="text.ExitInstaller2">You can complete the installation by running the installer later.</v:String>
+    <v:String x:Key="text.ExitInstaller3">Exit the installer?</v:String>
+</ResourceDictionary>
